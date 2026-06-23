@@ -12,7 +12,7 @@ export default function Home() {
     return (
         <div className="h-screen w-full">
             {/* Home */}
-            <section className="h-screen w-full pt-5 px-5 flex flex-col gap-8 items-center md:justify-between md:gap-0" id="home">
+            <section className="overflow-y-hidden h-screen w-full pt-5 px-5 flex flex-col gap-8 items-center justify-between md:justify-between md:gap-0" id="home">
                 <nav className="bg-primary w-full h-15 md:h-20 p-5 rounded-3xl flex justify-between items-center lg:h-25">
                     <div>
                         <ThemeToggle />
@@ -36,8 +36,8 @@ export default function Home() {
 
                 </nav>
                 
-                <div className="h-full w-full flex flex-col gap-8 md:flex-row-reverse">
-                    <div className="h-full flex flex-col gap-6 lg: lg:gap-15 md:justify-center">
+                <div className="h-full w-full flex flex-col gap-10 md:flex-row-reverse">
+                    <div className="h-full flex flex-col gap-10 lg: lg:gap-15 md:justify-center">
                         <div className="flex flex-col items-center md:items-end">
                             <div className="flex gap-1 md:gap-2 lg:gap-4">
                                 <h1 className="text-2xl font-semibold md:text-4xl lg:text-6xl">Hello, I'm</h1>
@@ -56,8 +56,8 @@ export default function Home() {
                     </div>
 
                     {/* Portrait */}
-                    <div className="h-full w-full flex justify-center md:justify-start items-end">
-                        <img src={Portrait} alt="portrait" className="h-[70%] md:h-[60%] lg:h-[62%]" />
+                    <div className="h-full w-full flex justify-center md:justify-start md:items-end">
+                        <img src={Portrait} alt="portrait" className="h-full w-full md:h-[60%] lg:h-[62%]" />
                     </div>
                 </div>
 
