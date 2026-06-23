@@ -56,7 +56,7 @@ export default function Home() {
                     </div>
 
                     {/* Portrait */}
-                    <div className="h-full w-full flex justify-center md:justify-start md:items-end">
+                    <div className="h-full w-full flex justify-center md:justify-start items-end">
                         <img src={Portrait} alt="portrait" className="h-[70%] md:h-[60%] lg:h-[62%]" />
                     </div>
                 </div>
