@@ -1,4 +1,4 @@
-import { Bars3Icon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, ChevronDownIcon, ComputerDesktopIcon } from "@heroicons/react/24/outline";
 import DownloadCVButton from "../components/DownloadCVButton";
 import ThemeToggle from "../components/ThemeToggle";
 import Portrait from "../assets/portrait.png"
@@ -61,22 +61,39 @@ export default function Home() {
                     </div>
                 </div>
 
-                <button className="absolute flex items-center justify-center rounded-full shadow-2xl shadow-black bg-primary h-16 w-16 bottom-2">
+                <button className="absolute flex items-center justify-center rounded-full shadow-2xl shadow-black bg-primary h-16 w-16 bottom-2 hover:cursor-pointer hover:scale-110 transition-transform ease-in-out" onClick={() => scrollToId("#about")}>
                     <ChevronDownIcon className="size-9 text-white" />
                 </button>
             </section>
 
             {/* About Me */}
-            <section className="h-screen w-full p-10 flex bg-primary" id="#about">
-                <div className="h-screen w-full md:w-1/2">
+            <section className="h-screen w-full p-5 flex flex-col md:p-10 md:flex-row bg-primary" id="#about">
+                <div className="h-screen w-full flex flex-col gap-5 md:w-1/2">
                     <div className="w-full flex flex-col justify-start items-start">
                         <h1 className="text-2xl lg:text-6xl text-white font-bold mb-4">Know About Me</h1>
                         <span className="h-1 bg-white w-[40%]"></span>
                     </div>
+                    
+                    <div className="w-full flex flex-col gap-2">
+                        <p className="text-gray-100 text-sm font-light">
+                            "Highly motivated and detail-oriented aspiring software developer with a strong passion for technology and programming. Proficient in JavaScript, Python, C#, and Java, with hands-on experience gained through projects and coursework. Eager to apply technical and problem-solving skills while continuously learning and contributing to innovative software solutions."
+                        </p>
+                        
+                        <h2 className="text-white text-md font-medium">- Adrian Pueblo</h2>
+                    </div>
                 </div>
 
-                <div>
-                    
+                <div className="h-full w-full flex flex-col">
+                    <div className="w-full flex flex-col gap-2">
+                        <h2 className="text-white text-xl font-medium">Experience</h2>
+                        <div className="w-full flex flex-row items-center gap-2">
+                            <ComputerDesktopIcon className="size-14 text-white" />
+                            <div>
+                                <h2 className="text-white text-sm font-medium">Cybersecurity Intern</h2>
+                                <p className="text-white text-sm font-light">Seaoil Philippines Inc. | November 2025 - May 2026</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
