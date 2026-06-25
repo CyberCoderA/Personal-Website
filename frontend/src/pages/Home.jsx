@@ -3,6 +3,8 @@ import { AcademicCapIcon, PencilIcon, BookOpenIcon } from "@heroicons/react/24/s
 import DownloadCVButton from "../components/DownloadCVButton";
 import ThemeToggle from "../components/ThemeToggle";
 import Portrait from "../assets/portrait.png"
+import JavaBadge from "../assets/java_badge.png"
+import CybersecBadge from "../assets/cybersec_badge.png"
 
 export default function Home() {
     const scrollToId = (id) => {
@@ -71,7 +73,7 @@ export default function Home() {
             <section className="bg-primary h-screen w-full p-5 gap-6 flex flex-col md:p-10 md:flex-row md:justify-between lg:p-10 lg:gap-10" id="#about">
                 <div className="w-full flex flex-col gap-5 md:w-1/2 lg:gap-12">
                     <div className="w-full flex flex-col justify-start items-start lg:gap-2">
-                        <h1 className="text-2xl md:text-4xl lg:text-6xl text-white font-bold mb-4">Know About Me</h1>
+                        <h1 className="text-xl md:text-4xl lg:text-6xl text-white font-bold mb-4">Know About Me</h1>
                         <span className="h-1 bg-white w-[40%]"></span>
                     </div>
                     
@@ -86,7 +88,7 @@ export default function Home() {
 
                 <div className="h-full w-full flex flex-col gap-5 md:gap-10 md:w-1/2 lg:justify-around">
                     <div className="w-full flex flex-col gap-3 px-2 md:px-5 md:gap-6">
-                        <h2 className="text-white text-xl font-medium md:text-2xl lg:text-4xl">Experience</h2>
+                    <h2 className="text-white text-xl font-medium md:text-2xl lg:text-4xl">Experience</h2>
                         <div className="w-full flex flex-row items-center gap-2">
                             <ComputerDesktopIcon className="size-10 md:size-14 lg:size-16 text-white" />
                             <div className="flex flex-col gap-1">
@@ -126,13 +128,136 @@ export default function Home() {
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </section>
 
-            <section className="h-screen w-full">
+            <section className="h-screen w-full flex flex-col justify-between p-3 md:p-5 lg:justify-around" id="#skills">
+                <div className="w-full flex flex-col gap-2 items-center md:gap-3.5 lg:gap-5">
+                    <h1 className="text-gray-700 text-xl font-bold md:text-4xl lg:text-6xl">My Skills</h1>
+                    <span className="h-0.5 bg-gray-900 w-[12%] lg:h-1"></span>
+                </div>
 
+                <div className="w-full flex flex-col gap-2 lg:gap-5">
+                    <h2 className="text-gray-500 text-xl font-semibold md:text-2xl lg:text-4xl">Certifications</h2>
+                    <div className="w-full flex flex-col gap-4 md:flex-row md:gap-5 lg:gap-10">
+                        <a href="https://www.credly.com/badges/19970429-f5f2-480c-b2fd-8f31d2fb7150/" target="_blank" rel="noopener noreferrer" className="h-25 md:h-50 lg:h-60 w-full md:w-6/12 lg:w-6/14">
+                            <div className="h-full bg-[#E9E9E9] shadow-xl flex flex-row items-start gap-2 p-2 rounded-2xl md:p-5 md:gap-5 transition-transform hover:scale-105 hover:cursor-pointer">
+                                <img src={JavaBadge} alt="java-badge" className="h-full" />
+                                <div className="h-full flex flex-col justify-around">
+                                    <div>
+                                        <h3 className="text-gray-800 text-sm font-medium md:text-lg lg:text-2xl">IT Specialist - Java</h3>
+                                        <p className="text-gray-600 text-xs font-light md:text-base lg:text-xl">Issued by Certiport</p>
+                                    </div>
+
+                                    <p className="text-gray-600 text-xs font-light md:text-base lg:text-lg overflow-y-hidden">Earners of this badge demonstrate that they can recognize, write, and debug Java code that will logically solve a problem.</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="https://www.credly.com/badges/ae3abd00-13a6-45bb-8609-c43526cee6b1/linked_in?t=te6vxh" target="_blank" rel="noopener noreferrer" className="h-25 md:h-50 lg:h-60 w-full md:w-6/12 lg:w-6/11">
+                                <div className="h-full bg-[#E9E9E9] shadow-xl flex flex-row items-start gap-2 p-2 rounded-2xl md:p-5 md:gap-5 transition-transform hover:scale-105 hover:cursor-pointer">
+                                <img src={CybersecBadge} alt="java-badge" className="h-full" />
+                                <div className="h-full flex flex-col justify-around">
+                                    <div>
+                                        <h3 className="text-gray-800 text-sm font-medium md:text-lg lg:text-2xl">IT Specialist - Cybersecurity</h3>
+                                        <p className="text-gray-600 text-xs font-light md:text-base lg:text-xl">Issued by Certiport</p>
+                                    </div>
+
+                                    <p className="text-gray-600 text-xs font-light md:text-base lg:text-lg overflow-y-scroll">Earners of this badge are starting their journey in the cybersecurity field. This exam assesses their understanding of key security paradigms, terminology, and mindset. Badge earners have a keen awareness of the importance of security and the threats to a business when security procedures are not followed. They are willing to teach others about security concerns. They are developing the investigative and implementation skills necessary to succeed in the field.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div className="w-full flex flex-col gap-2 lg:gap-5">
+                    <h2 className="text-gray-500 text-xl font-semibold md:text-2xl lg:text-4xl">Technical Skills Breakdown</h2>
+                    <div className="w-full flex flex-col gap-3 md:flex-row md:gap-5 lg:gap-10">
+                        <div className="h-23 w-full px-2 py-1 flex flex-col bg-[#E9E9E9] rounded-2xl shadow-xl md:h-60 lg:h-100 lg:p-5">
+                            <h3 className="text-gray-800 text-sm font-medium md:text-xl lg:text-2xl">Coding Languages</h3>
+                            <div className="w-full flex flex-row flex-wrap gap-1 items-center justify-start mt-2 md:mt-5 lg:mt-10 lg:gap-3">
+                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
+                                    <h4 className="text-sm text-gray-800 lg:text-2xl">Java</h4>
+                                </div>
+
+                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
+                                    <h4 className="text-sm text-gray-800 lg:text-2xl">Python</h4>
+                                </div>
+
+                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
+                                    <h4 className="text-sm text-gray-800 lg:text-2xl">JavaScript</h4>
+                                </div>
+
+                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
+                                    <h4 className="text-sm text-gray-800 lg:text-2xl">C++</h4>
+                                </div>
+
+                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
+                                    <h4 className="text-sm text-gray-800 lg:text-2xl">Dart</h4>
+                                </div>
+
+                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
+                                    <h4 className="text-sm text-gray-800 lg:text-2xl">SQL</h4>
+                                </div>
+
+                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
+                                    <h4 className="text-sm text-gray-800 lg:text-2xl">MongoDB</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="h-23 w-full px-2 py-1 bg-[#E9E9E9] rounded-2xl shadow-xl md:h-60 lg:h-100 lg:p-5">
+                            <h3 className="text-gray-800 text-sm font-medium md:text-lg lg:text-2xl">Web Tech</h3>
+                            <div className="w-full flex flex-row flex-wrap gap-1 items-center justify-start mt-2 md:mt-5 lg:mt-10 lg:gap-3">
+                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
+                                    <h4 className="text-sm text-gray-800 lg:text-2xl">Node</h4>
+                                </div>
+
+                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
+                                    <h4 className="text-sm text-gray-800 lg:text-2xl">Flask</h4>
+                                </div>
+
+                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
+                                    <h4 className="text-sm text-gray-800 lg:text-2xl">CSS</h4>
+                                </div>
+
+                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
+                                    <h4 className="text-sm text-gray-800 lg:text-2xl">Tailwind</h4>
+                                </div>
+
+                                 <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
+                                    <h4 className="text-sm text-gray-800 lg:text-2xl">React</h4>
+                                </div>
+
+                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
+                                    <h4 className="text-sm text-gray-800 lg:text-2xl">Springboot</h4>
+                                </div>
+
+                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
+                                    <h4 className="text-sm text-gray-800 lg:text-2xl">JQuery</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="h-18 px-2 w-full flex flex-col bg-[#E9E9E9] rounded-2xl shadow-xl md:p-2 md:h-60 lg:h-100 lg:p-5">
+                            <h3 className="text-gray-800 text-sm font-medium md:text-lg lg:text-2xl">Mobile Tech</h3>
+                            <div className="w-full flex flex-row flex-wrap gap-1 items-center justify-start mt-2 md:mt-5 lg:mt-10 lg:gap-3">
+                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
+                                    <h4 className="text-sm text-gray-800 lg:text-2xl">Flutter</h4>
+                                </div>
+
+                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
+                                    <h4 className="text-sm text-gray-800 lg:text-2xl">Android/Java</h4>
+                                </div>
+
+                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
+                                    <h4 className="text-sm text-gray-800 lg:text-2xl">React Native</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
     )
