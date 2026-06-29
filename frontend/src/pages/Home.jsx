@@ -1,16 +1,66 @@
+import { useEffect, useState } from "react";
 import { Bars3Icon, ChevronDownIcon, ComputerDesktopIcon } from "@heroicons/react/24/outline";
-import { AcademicCapIcon, PencilIcon, BookOpenIcon } from "@heroicons/react/24/solid";
+import { AcademicCapIcon, PencilIcon, BookOpenIcon, ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import DownloadCVButton from "../components/DownloadCVButton";
 import ThemeToggle from "../components/ThemeToggle";
 import Portrait from "../assets/portrait.png"
 import JavaBadge from "../assets/java_badge.png"
 import CybersecBadge from "../assets/cybersec_badge.png"
+import Medicore_IMG from "../assets/medicore_img.png"
+import FLICKD_IMG from "../assets/flickd_img.png"
+import BITBOOKS_IMG from "../assets/bitbooks_img.png"
 
 export default function Home() {
     const scrollToId = (id) => {
         const el = document.getElementById(id);
         if (el) el.scrollIntoView({ behavior: "smooth" });
     }
+
+    const projects = [
+        {
+            title: "Medicore",
+            image: Medicore_IMG,
+            description: "A Hospital Management System that integrates JWT-based authentication, CRUD operations, and multiple business related processes.",
+            link: "https://github.com/search?q=Medicore"
+        },
+        {
+            title: "Flickd",
+            image: FLICKD_IMG,
+            description: "A movie review sharing inspired by letterbox. I worked on the frontend development using React and integrated the backend my team mate developed using Node.js and Express.",
+            link: "https://github.com/search?q=Flickd"
+        },
+        {
+            title: "BitBooks",
+            image: BITBOOKS_IMG,
+            description: "A digital reading and library management experience designed for organized, user-friendly book browsing.",
+            link: "https://github.com/CyberCoderA/flask_book_recommender"
+        }
+    ];
+
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    // For automatically changing the active project every 3 seconds
+    useEffect(() => {
+        const interval = globalThis.setInterval(() => {
+            setActiveIndex((prevIndex) => (prevIndex === projects.length - 1 ? 0 : prevIndex + 1));
+        }, 3000);
+
+        return () => globalThis.clearInterval(interval);
+    }, [projects.length]);
+
+    const goToNext = () => {
+        setActiveIndex((prevIndex) => (prevIndex === projects.length - 1 ? 0 : prevIndex + 1));
+    };
+
+    const goToPrev = () => {
+        setActiveIndex((prevIndex) => (prevIndex === 0 ? projects.length - 1 : prevIndex - 1));
+    };
+
+    const openProject = () => {
+        window.open(activeProject.link, "_blank", "noopener,noreferrer");
+    };
+
+    const activeProject = projects[activeIndex];
 
     return (
         <div className="h-screen w-full">
@@ -31,7 +81,7 @@ export default function Home() {
 
                             <li><button className="text-2xl py-3 px-3 rounded-full text-white  hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold" onClick={() => scrollToId("#skills")}>Skills</button></li>
 
-                            <li><button className="text-2xl py-3 px-3 rounded-full text-white  hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold">Projects</button></li>
+                            <li><button className="text-2xl py-3 px-3 rounded-full text-white  hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold" onClick={() => scrollToId("#projects")}>Projects</button></li>
                             
                             <li><button className="text-2xl py-3 px-3 rounded-full text-white  hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold">Contact</button></li>
                         </ul>
@@ -256,6 +306,70 @@ export default function Home() {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="h-screen w-full flex flex-col p-3 md:p-5" id="#projects">
+                <div className="h-1/3 w-full flex flex-col gap-6">
+                    <div className="w-full flex flex-col gap-5">
+                        <h2 className="text-gray-800 text-6xl font-bold">My Projects</h2>
+                        <span className="h-1.5 bg-gray-800 w-[15%]"></span>
+                    </div>
+
+                    <p className="w-1/2 text-gray-600 text-xs font-light md:text-base lg:text-xl lg:font-medium lg:text-gray-500">Below are some of my complete projects. Feel free to download the source code from my GitHub and tinker with it.</p>
+                </div>
+
+                {/* Carousel */}
+                <div className="h-1/2 w-full flex flex-col items-center justify-center gap-5">
+                    <div className="relative h-full w-full md:w-3/4 lg:w-1/2 flex items-center justify-center overflow-hidden">
+                        <button
+                            type="button"
+                            onClick={goToPrev}
+                            className="absolute left-2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 hover:bg-black/80 hover:cursor-pointer"
+                            aria-label="Previous project"
+                        >
+                            <ChevronLeftIcon className="size-6 text-white" />
+                        </button>
+
+                        <div className="relative h-full w-full overflow-hidden rounded-4xl">
+                            <div className="pointer-events-none absolute inset-0 z-10 rounded-4xl bg-black/45 flex flex-col items-center justify-center gap-4 lg:gap-10 p-6 md:p-10">
+                                <h2 className="text-white text-2xl md:text-4xl font-bold text-center">{activeProject.title}</h2>
+
+                                <p className="w-full md:w-3/4 text-white text-base md:text-2xl text-center font-light">{activeProject.description}</p>
+                                
+                                <button
+                                    type="button"
+                                    onClick={openProject}
+                                    className="pointer-events-auto px-5 py-2 text-sm font-semibold border-2 border-white text-white rounded-full transition-transform ease-in-out z-40 hover:scale-105 hover:cursor-pointer hover:bg-white hover:text-primary md:text-lg md:px-10"
+                                >
+                                    View Project
+                                </button>
+                            </div>
+
+                            <img src={activeProject.image} alt={activeProject.title} className="h-full w-full rounded-4xl object-cover" />
+                        </div>
+
+                        <button
+                            type="button"
+                            onClick={goToNext}
+                            className="absolute right-2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 hover:bg-black/80 hover:cursor-pointer"
+                            aria-label="Next project"
+                        >
+                            <ChevronRightIcon className="size-6 text-white" />
+                        </button>
+                    </div>
+
+                    <div className="flex gap-2">
+                        {projects.map((project, index) => (
+                            <button
+                                key={project.title}
+                                type="button"
+                                onClick={() => setActiveIndex(index)}
+                                className={`h-3 w-3 rounded-full transition-colors ${index === activeIndex ? "bg-primary" : "bg-gray-300"}`}
+                                aria-label={`Show ${project.title}`}
+                            />
+                        ))}
                     </div>
                 </div>
             </section>
