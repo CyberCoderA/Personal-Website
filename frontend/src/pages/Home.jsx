@@ -38,6 +38,12 @@ export default function Home() {
     ];
 
     const [activeIndex, setActiveIndex] = useState(0);
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+    useEffect(() => {
+        document.body.style.backgroundColor = isDarkMode ? '#020617' : '#ffffff';
+        document.body.style.color = isDarkMode ? '#f8fafc' : '#0f172a';
+    }, [isDarkMode]);
 
     // For automatically changing the active project every 3 seconds
     useEffect(() => {
@@ -61,14 +67,17 @@ export default function Home() {
     };
 
     const activeProject = projects[activeIndex];
+    const cardClasses = isDarkMode ? "bg-slate-800 text-slate-100 shadow-slate-900/50" : "bg-[#E9E9E9] text-gray-800 shadow-xl";
+    const pillClasses = isDarkMode ? "bg-slate-700 text-slate-100" : "bg-[#CCC] text-gray-800";
+    const mutedTextClasses = isDarkMode ? "text-slate-400" : "text-gray-600";
 
     return (
-        <div className="h-screen w-full">
+        <div className={`min-h-screen w-full transition-colors duration-300 ${isDarkMode ? 'bg-slate-950 text-slate-100' : 'bg-white text-slate-900'}`}>
             {/* Home */}
-            <section className="overflow-y-hidden h-screen w-full pt-5 px-5 flex flex-col gap-8 items-center justify-between md:justify-between md:gap-0" id="home">
-                <nav className="bg-primary w-full h-15 md:h-20 p-5 rounded-3xl flex justify-between items-center lg:h-25">
+            <section className={`overflow-y-hidden h-screen w-full pt-5 px-5 flex flex-col gap-8 items-center justify-between md:justify-between md:gap-0 transition-colors duration-300 ${isDarkMode ? 'bg-slate-950 text-slate-100' : 'bg-white text-slate-900'}`} id="home">
+                <nav className={`w-full h-15 md:h-20 p-5 rounded-3xl flex justify-between items-center lg:h-25 transition-colors duration-300 ${isDarkMode ? 'bg-slate-800' : 'bg-primary'}`}>
                     <div>
-                        <ThemeToggle />
+                        <ThemeToggle isDark={isDarkMode} onToggle={() => setIsDarkMode((prev) => !prev)} />
                     </div>
 
                     {/* Nav Links */}
@@ -99,7 +108,7 @@ export default function Home() {
                             <h1 className="text-2xl font-semibold md:text-4xl lg:text-6xl">Aspiring Developer!</h1>
                         </div>
 
-                        <p className="text-sm text-gray-600 font-light text-center md:text-end md:text-xl lg:text-4xl">I am a motivated and detail-oriented professional seeking to leverage my technical skills in a dynamic organization to contribute a positive impact. My ability to handle tasks under pressure will be a great addition to any organization I’m part of.</p>
+                        <p className={`text-sm font-light text-center md:text-end md:text-xl lg:text-4xl ${isDarkMode ? 'text-slate-300' : 'text-gray-600'}`}>I am a motivated and detail-oriented professional seeking to leverage my technical skills in a dynamic organization to contribute a positive impact. My ability to handle tasks under pressure will be a great addition to any organization I’m part of.</p>
 
                         <div className="w-full flex justify-center gap-15 lg:gap-30 md:justify-end">
                             <DownloadCVButton redirectTo="https://drive.google.com/file/d/1F-exz-5iQqMyHqvupUrYnQ-UgAscbGlS/view?usp=sharing"/>
@@ -120,7 +129,7 @@ export default function Home() {
             </section>
 
             {/* About Me */}
-            <section className="bg-primary h-screen w-full p-5 gap-6 flex flex-col md:p-10 md:flex-row md:justify-between lg:p-10 lg:gap-10" id="#about">
+            <section className={`h-screen w-full p-5 gap-6 flex flex-col md:p-10 md:flex-row md:justify-between lg:p-10 lg:gap-10 transition-colors duration-300 ${isDarkMode ? 'bg-slate-900' : 'bg-primary'}`} id="#about">
                 <div className="w-full flex flex-col gap-5 md:w-1/2 lg:gap-12">
                     <div className="w-full flex flex-col justify-start items-start lg:gap-2">
                         <h1 className="text-xl md:text-4xl lg:text-6xl text-white font-bold mb-4">Know About Me</h1>
@@ -150,31 +159,31 @@ export default function Home() {
                         <span className="h-0.5 bg-white w-[40%] lg:h-1"></span>
                     </div>
 
-                    <div className="h-full w-full p-2 bg-[#FBFBFB] rounded-2xl flex flex-col gap-1 md:gap-3 lg:gap-5 md:p-5 lg:h-6/8">
-                        <h2 className="text-black text-lg font-medium md:text-2xl lg:text-4xl">Education</h2>
+                    <div className={`h-full w-full p-2 rounded-2xl flex flex-col gap-1 md:gap-3 lg:gap-5 md:p-5 lg:h-6/8 transition-colors duration-300 ${isDarkMode ? 'bg-slate-800 text-slate-100' : 'bg-[#FBFBFB] text-black'}`}>
+                        <h2 className={`${mutedTextClasses} text-lg font-medium md:text-2xl lg:text-4xl`}>Education</h2>
 
                         <div className="h-full w-full flex flex-col justify-around">
                             <div className="w-full flex flex-row items-center gap-2 md:gap-5">
-                                <AcademicCapIcon className="size-12 md:size-30 text-gray-900" />
+                                <AcademicCapIcon className={`${mutedTextClasses} size-12 md:size-30 text-gray-900`} />
                                 <div className="flex flex-col gap-1">
-                                    <h2 className="w-full text-gray-800 text-[11px] font-medium md:text-xl lg:text-2xl">Bachelor of Science in Information Technology - Mobile and Web Programming</h2>
-                                    <p className="text-gray-800 text-[10px] font-light md:text-lg lg:text-xl">NU MOA | 2026</p>
+                                    <h2 className={`w-full ${mutedTextClasses} text-[11px] font-medium md:text-xl lg:text-2xl`}>Bachelor of Science in Information Technology - Mobile and Web Programming</h2>
+                                    <p className={`${mutedTextClasses} text-gray-800 text-[10px] font-light md:text-lg lg:text-xl`}>NU MOA | 2026</p>
                                 </div>
                             </div>
 
                             <div className="w-full flex flex-row items-center gap-2 md:gap-5">
-                                <PencilIcon className="size-10 md:size-26 text-gray-900" />
+                                <PencilIcon className={`${mutedTextClasses} size-10 md:size-26 text-gray-900`} />
                                 <div className="flex flex-col gap-1">
-                                    <h2 className="w-full text-gray-800 text-[11px] font-medium md:text-xl lg:text-2xl">Secondary Education (Highschool & Senior Highschool) - ICT Strand</h2>
-                                    <p className="text-gray-800 text-[10px] font-light md:text-lg lg:text-xl">Pasay City North Highschool - MDC | 2026</p>
+                                    <h2 className={`w-full ${mutedTextClasses} text-[11px] font-medium md:text-xl lg:text-2xl`}>Secondary Education (Highschool & Senior Highschool) - ICT Strand</h2>
+                                    <p className={`${mutedTextClasses} text-gray-800 text-[10px] font-light md:text-lg lg:text-xl`}>Pasay City North Highschool - MDC | 2026</p>
                                 </div>
                             </div>
 
                             <div className="w-full flex flex-row items-center gap-2 md:gap-5">
-                                <BookOpenIcon className="size-10 md:size-22 text-gray-900" />
+                                <BookOpenIcon className={`${mutedTextClasses} size-10 md:size-22 text-gray-900`} />
                                 <div className="flex flex-col gap-1">
-                                    <h2 className="w-full text-gray-800 text-[11px] font-medium md:text-xl lg:text-2xl">Primary/Elementary Education</h2>
-                                    <p className="text-gray-800 text-[10px] font-light md:text-lg lg:text-xl">P. Villanueva Elementary School | 2016</p>
+                                    <h2 className={`w-full ${mutedTextClasses} text-[11px] font-medium md:text-xl lg:text-2xl`}>Primary/Elementary Education</h2>
+                                    <p className={`${mutedTextClasses} text-gray-800 text-[10px] font-light md:text-lg lg:text-xl`}>P. Villanueva Elementary School | 2016</p>
                                 </div>
                             </div>
                         </div>
@@ -182,39 +191,39 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="h-screen w-full flex flex-col justify-between p-3 md:p-5 lg:justify-around" id="#skills">
+            <section className={`h-screen w-full flex flex-col justify-between p-3 md:p-5 lg:justify-around transition-colors duration-300 ${isDarkMode ? 'bg-slate-950 text-slate-100' : 'bg-white text-slate-900'}`} id="#skills">
                 <div className="w-full flex flex-col gap-2 items-center md:gap-3.5 lg:gap-5">
-                    <h1 className="text-gray-700 text-xl font-bold md:text-4xl lg:text-6xl">My Skills</h1>
-                    <span className="h-0.5 bg-gray-900 w-[12%] lg:h-1"></span>
+                    <h1 className={`text-xl font-bold md:text-4xl lg:text-6xl ${isDarkMode ? 'text-slate-100' : 'text-gray-700'}`}>My Skills</h1>
+                    <span className={`h-0.5 w-[12%] lg:h-1 ${isDarkMode ? 'bg-slate-300' : 'bg-gray-900'}`}></span>
                 </div>
 
                 <div className="w-full flex flex-col gap-2 lg:gap-5">
-                    <h2 className="text-gray-500 text-xl font-semibold md:text-2xl lg:text-4xl">Certifications</h2>
+                    <h2 className={`text-xl font-semibold md:text-2xl lg:text-4xl ${isDarkMode ? 'text-slate-300' : 'text-gray-500'}`}>Certifications</h2>
                     <div className="w-full flex flex-col gap-4 md:flex-row md:gap-5 lg:gap-10">
                         <a href="https://www.credly.com/badges/19970429-f5f2-480c-b2fd-8f31d2fb7150/" target="_blank" rel="noopener noreferrer" className="h-25 md:h-50 lg:h-60 w-full md:w-6/12 lg:w-6/14">
-                            <div className="h-full bg-[#E9E9E9] shadow-xl flex flex-row items-start gap-2 p-2 rounded-2xl md:p-5 md:gap-5 transition-transform hover:scale-105 hover:cursor-pointer">
+                            <div className={`h-full ${cardClasses} shadow-xl flex flex-row items-start gap-2 p-2 rounded-2xl md:p-5 md:gap-5 transition-transform hover:scale-105 hover:cursor-pointer`}>
                                 <img src={JavaBadge} alt="java-badge" className="h-full" />
                                 <div className="h-full flex flex-col justify-around">
                                     <div>
-                                        <h3 className="text-gray-800 text-sm font-medium md:text-lg lg:text-2xl">IT Specialist - Java</h3>
-                                        <p className="text-gray-600 text-xs font-light md:text-base lg:text-xl">Issued by Certiport</p>
+                                        <h3 className="text-sm font-medium md:text-lg lg:text-2xl">IT Specialist - Java</h3>
+                                        <p className={`${mutedTextClasses} text-xs font-light md:text-base lg:text-xl`}>Issued by Certiport</p>
                                     </div>
 
-                                    <p className="text-gray-600 text-xs font-light md:text-base lg:text-lg overflow-y-hidden">Earners of this badge demonstrate that they can recognize, write, and debug Java code that will logically solve a problem.</p>
+                                    <p className={`${mutedTextClasses} text-xs font-light md:text-base lg:text-lg overflow-y-hidden`}>Earners of this badge demonstrate that they can recognize, write, and debug Java code that will logically solve a problem.</p>
                                 </div>
                             </div>
                         </a>
 
                         <a href="https://www.credly.com/badges/ae3abd00-13a6-45bb-8609-c43526cee6b1/linked_in?t=te6vxh" target="_blank" rel="noopener noreferrer" className="h-25 md:h-50 lg:h-60 w-full md:w-6/12 lg:w-6/11">
-                                <div className="h-full bg-[#E9E9E9] shadow-xl flex flex-row items-start gap-2 p-2 rounded-2xl md:p-5 md:gap-5 transition-transform hover:scale-105 hover:cursor-pointer">
+                                <div className={`h-full ${cardClasses} shadow-xl flex flex-row items-start gap-2 p-2 rounded-2xl md:p-5 md:gap-5 transition-transform hover:scale-105 hover:cursor-pointer`}>
                                 <img src={CybersecBadge} alt="java-badge" className="h-full" />
                                 <div className="h-full flex flex-col justify-around">
                                     <div>
-                                        <h3 className="text-gray-800 text-sm font-medium md:text-lg lg:text-2xl">IT Specialist - Cybersecurity</h3>
-                                        <p className="text-gray-600 text-xs font-light md:text-base lg:text-xl">Issued by Certiport</p>
+                                        <h3 className="text-sm font-medium md:text-lg lg:text-2xl">IT Specialist - Cybersecurity</h3>
+                                        <p className={`${mutedTextClasses} text-xs font-light md:text-base lg:text-xl`}>Issued by Certiport</p>
                                     </div>
 
-                                    <p className="text-gray-600 text-xs font-light md:text-base lg:text-lg overflow-y-scroll">Earners of this badge are starting their journey in the cybersecurity field. This exam assesses their understanding of key security paradigms, terminology, and mindset. Badge earners have a keen awareness of the importance of security and the threats to a business when security procedures are not followed. They are willing to teach others about security concerns. They are developing the investigative and implementation skills necessary to succeed in the field.</p>
+                                    <p className={`${mutedTextClasses} text-xs font-light md:text-base lg:text-lg overflow-y-scroll`}>Earners of this badge are starting their journey in the cybersecurity field. This exam assesses their understanding of key security paradigms, terminology, and mindset. Badge earners have a keen awareness of the importance of security and the threats to a business when security procedures are not followed. They are willing to teach others about security concerns. They are developing the investigative and implementation skills necessary to succeed in the field.</p>
                                 </div>
                             </div>
                         </a>
@@ -222,87 +231,87 @@ export default function Home() {
                 </div>
 
                 <div className="w-full flex flex-col gap-2 lg:gap-5">
-                    <h2 className="text-gray-500 text-xl font-semibold md:text-2xl lg:text-4xl">Technical Skills Breakdown</h2>
+                    <h2 className={`text-xl font-semibold md:text-2xl lg:text-4xl ${isDarkMode ? 'text-slate-300' : 'text-gray-500'}`}>Technical Skills Breakdown</h2>
                     <div className="w-full flex flex-col gap-3 md:flex-row md:gap-5 lg:gap-10">
-                        <div className="h-23 w-full px-2 py-1 flex flex-col bg-[#E9E9E9] rounded-2xl shadow-xl md:h-60 lg:h-100 lg:p-5">
-                            <h3 className="text-gray-800 text-sm font-medium md:text-xl lg:text-2xl">Coding Languages</h3>
+                        <div className={`h-23 w-full px-2 py-1 flex flex-col rounded-2xl shadow-xl md:h-60 lg:h-100 lg:p-5 ${cardClasses}`}>
+                            <h3 className="text-sm font-medium md:text-xl lg:text-2xl">Coding Languages</h3>
                             <div className="w-full flex flex-row flex-wrap gap-1 items-center justify-start mt-2 md:mt-5 lg:mt-10 lg:gap-3">
-                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
-                                    <h4 className="text-sm text-gray-800 lg:text-2xl">Java</h4>
+                                <div className={`h-6 px-3 flex items-center rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl ${pillClasses}`}>
+                                    <h4 className="text-sm lg:text-2xl">Java</h4>
                                 </div>
 
-                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
-                                    <h4 className="text-sm text-gray-800 lg:text-2xl">Python</h4>
+                                <div className={`h-6 px-3 flex items-center rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl ${pillClasses}`}>
+                                    <h4 className="text-sm lg:text-2xl">Python</h4>
                                 </div>
 
-                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
-                                    <h4 className="text-sm text-gray-800 lg:text-2xl">JavaScript</h4>
+                                <div className={`h-6 px-3 flex items-center rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl ${pillClasses}`}>
+                                    <h4 className="text-sm lg:text-2xl">JavaScript</h4>
                                 </div>
 
-                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
-                                    <h4 className="text-sm text-gray-800 lg:text-2xl">C++</h4>
+                                <div className={`h-6 px-3 flex items-center rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl ${pillClasses}`}>
+                                    <h4 className="text-sm lg:text-2xl">C++</h4>
                                 </div>
 
-                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
-                                    <h4 className="text-sm text-gray-800 lg:text-2xl">Dart</h4>
+                                <div className={`h-6 px-3 flex items-center rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl ${pillClasses}`}>
+                                    <h4 className="text-sm lg:text-2xl">Dart</h4>
                                 </div>
 
-                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
-                                    <h4 className="text-sm text-gray-800 lg:text-2xl">SQL</h4>
+                                <div className={`h-6 px-3 flex items-center rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl ${pillClasses}`}>
+                                    <h4 className="text-sm lg:text-2xl">SQL</h4>
                                 </div>
 
-                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
-                                    <h4 className="text-sm text-gray-800 lg:text-2xl">MongoDB</h4>
+                                <div className={`h-6 px-3 flex items-center rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl ${pillClasses}`}>
+                                    <h4 className="text-sm lg:text-2xl">MongoDB</h4>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="h-23 w-full px-2 py-1 bg-[#E9E9E9] rounded-2xl shadow-xl md:h-60 lg:h-100 lg:p-5">
-                            <h3 className="text-gray-800 text-sm font-medium md:text-lg lg:text-2xl">Web Tech</h3>
+                        <div className={`h-23 w-full px-2 py-1 rounded-2xl shadow-xl md:h-60 lg:h-100 lg:p-5 ${cardClasses}`}>
+                            <h3 className="text-sm font-medium md:text-lg lg:text-2xl">Web Tech</h3>
                             <div className="w-full flex flex-row flex-wrap gap-1 items-center justify-start mt-2 md:mt-5 lg:mt-10 lg:gap-3">
-                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
-                                    <h4 className="text-sm text-gray-800 lg:text-2xl">Node</h4>
+                                <div className={`h-6 px-3 flex items-center rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl ${pillClasses}`}>
+                                    <h4 className="text-sm lg:text-2xl">Node</h4>
                                 </div>
 
-                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
-                                    <h4 className="text-sm text-gray-800 lg:text-2xl">Flask</h4>
+                                <div className={`h-6 px-3 flex items-center rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl ${pillClasses}`}>
+                                    <h4 className="text-sm lg:text-2xl">Flask</h4>
                                 </div>
 
-                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
-                                    <h4 className="text-sm text-gray-800 lg:text-2xl">CSS</h4>
+                                <div className={`h-6 px-3 flex items-center rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl ${pillClasses}`}>
+                                    <h4 className="text-sm lg:text-2xl">CSS</h4>
                                 </div>
 
-                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
-                                    <h4 className="text-sm text-gray-800 lg:text-2xl">Tailwind</h4>
+                                <div className={`h-6 px-3 flex items-center rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl ${pillClasses}`}>
+                                    <h4 className="text-sm lg:text-2xl">Tailwind</h4>
                                 </div>
 
-                                 <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
-                                    <h4 className="text-sm text-gray-800 lg:text-2xl">React</h4>
+                                 <div className={`h-6 px-3 flex items-center rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl ${pillClasses}`}>
+                                    <h4 className="text-sm lg:text-2xl">React</h4>
                                 </div>
 
-                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
-                                    <h4 className="text-sm text-gray-800 lg:text-2xl">Springboot</h4>
+                                <div className={`h-6 px-3 flex items-center rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl ${pillClasses}`}>
+                                    <h4 className="text-sm lg:text-2xl">Springboot</h4>
                                 </div>
 
-                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
-                                    <h4 className="text-sm text-gray-800 lg:text-2xl">JQuery</h4>
+                                <div className={`h-6 px-3 flex items-center rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl ${pillClasses}`}>
+                                    <h4 className="text-sm lg:text-2xl">JQuery</h4>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="h-18 px-2 w-full flex flex-col bg-[#E9E9E9] rounded-2xl shadow-xl md:p-2 md:h-60 lg:h-100 lg:p-5">
-                            <h3 className="text-gray-800 text-sm font-medium md:text-lg lg:text-2xl">Mobile Tech</h3>
+                        <div className={`h-18 px-2 w-full flex flex-col rounded-2xl shadow-xl md:p-2 md:h-60 lg:h-100 lg:p-5 ${cardClasses}`}>
+                            <h3 className="text-sm font-medium md:text-lg lg:text-2xl">Mobile Tech</h3>
                             <div className="w-full flex flex-row flex-wrap gap-1 items-center justify-start mt-2 md:mt-5 lg:mt-10 lg:gap-3">
-                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
-                                    <h4 className="text-sm text-gray-800 lg:text-2xl">Flutter</h4>
+                                <div className={`h-6 px-3 flex items-center rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl ${pillClasses}`}>
+                                    <h4 className="text-sm lg:text-2xl">Flutter</h4>
                                 </div>
 
-                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
-                                    <h4 className="text-sm text-gray-800 lg:text-2xl">Android/Java</h4>
+                                <div className={`h-6 px-3 flex items-center rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl ${pillClasses}`}>
+                                    <h4 className="text-sm lg:text-2xl">Android/Java</h4>
                                 </div>
 
-                                <div className="h-6 px-3 flex items-center bg-[#CCC] rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl">
-                                    <h4 className="text-sm text-gray-800 lg:text-2xl">React Native</h4>
+                                <div className={`h-6 px-3 flex items-center rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl ${pillClasses}`}>
+                                    <h4 className="text-sm lg:text-2xl">React Native</h4>
                                 </div>
                             </div>
                         </div>
@@ -313,11 +322,11 @@ export default function Home() {
             <section className="h-screen w-full flex flex-col p-3 md:p-5" id="#projects">
                 <div className="h-1/3 w-full flex flex-col gap-6">
                     <div className="w-full flex flex-col gap-5">
-                        <h2 className="text-gray-800 text-6xl font-bold">My Projects</h2>
+                        <h2 className={`text-gray-800 text-6xl font-bold ${isDarkMode ? 'text-slate-100' : 'text-gray-800'}`}>My Projects</h2>
                         <span className="h-1.5 bg-gray-800 w-[15%]"></span>
                     </div>
 
-                    <p className="w-1/2 text-gray-600 text-xs font-light md:text-base lg:text-xl lg:font-medium lg:text-gray-500">Below are some of my complete projects. Feel free to download the source code from my GitHub and tinker with it.</p>
+                    <p className={`w-1/2 ${mutedTextClasses} text-xs font-light md:text-base lg:text-xl lg:font-medium`}>Below are some of my complete projects. Feel free to download the source code from my GitHub and tinker with it.</p>
                 </div>
 
                 {/* Carousel */}
