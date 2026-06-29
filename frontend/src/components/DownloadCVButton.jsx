@@ -1,8 +1,13 @@
 import { ArrowDownTrayIcon } from "@heroicons/react/24/solid";
 
-export default function DownloadCVButton() {
+export default function DownloadCVButton({ redirectTo }) {
+  const redirectToCV = () => {
+    window.open(redirectTo, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <button
+      onClick={redirectToCV}
       className="
         inline-flex
         rounded-full

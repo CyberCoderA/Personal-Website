@@ -102,7 +102,7 @@ export default function Home() {
                         <p className="text-sm text-gray-600 font-light text-center md:text-end md:text-xl lg:text-4xl">I am a motivated and detail-oriented professional seeking to leverage my technical skills in a dynamic organization to contribute a positive impact. My ability to handle tasks under pressure will be a great addition to any organization I’m part of.</p>
 
                         <div className="w-full flex justify-center gap-15 lg:gap-30 md:justify-end">
-                            <DownloadCVButton />
+                            <DownloadCVButton redirectTo="https://drive.google.com/file/d/1F-exz-5iQqMyHqvupUrYnQ-UgAscbGlS/view?usp=sharing"/>
 
                             <button className="border-3 px-5 text-sm font-semibold border-primary text-primary rounded-full transition-transform ease-in-out hover:scale-105 hover:cursor-pointer hover:bg-primary hover:text-white lg:text-2xl lg:px-10">Contact Me</button>
                         </div>
