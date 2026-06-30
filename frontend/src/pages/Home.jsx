@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Bars3Icon, ChevronDownIcon, ComputerDesktopIcon } from "@heroicons/react/24/outline";
-import { AcademicCapIcon, PencilIcon, BookOpenIcon, ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+import { AcademicCapIcon, PencilIcon, BookOpenIcon, ChevronLeftIcon, ChevronRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import DownloadCVButton from "../components/DownloadCVButton";
 import ThemeToggle from "../components/ThemeToggle";
 import Portrait from "../assets/portrait.png"
@@ -39,6 +39,7 @@ export default function Home() {
 
     const [activeIndex, setActiveIndex] = useState(0);
     const [isDarkMode, setIsDarkMode] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         document.body.style.backgroundColor = isDarkMode ? '#020617' : '#ffffff';
@@ -62,6 +63,10 @@ export default function Home() {
         setActiveIndex((prevIndex) => (prevIndex === 0 ? projects.length - 1 : prevIndex - 1));
     };
 
+    const contactWithEmail = () => {
+        globalThis.location.href = "mailto:adrian.pueblo27@gmail.com";
+    }
+
     const openProject = () => {
         window.open(activeProject.link, "_blank", "noopener,noreferrer");
     };
@@ -75,26 +80,34 @@ export default function Home() {
         <div className={`min-h-screen w-full transition-colors duration-300 ${isDarkMode ? 'bg-slate-950 text-slate-100' : 'bg-white text-slate-900'}`}>
             {/* Home */}
             <section className={`overflow-y-hidden h-screen w-full pt-5 px-5 flex flex-col gap-8 items-center justify-between md:justify-between md:gap-0 transition-colors duration-300 ${isDarkMode ? 'bg-slate-950 text-slate-100' : 'bg-white text-slate-900'}`} id="home">
-                <nav className={`w-full h-15 md:h-20 p-5 rounded-3xl flex justify-between items-center lg:h-25 transition-colors duration-300 ${isDarkMode ? 'bg-slate-800' : 'bg-primary'}`}>
-                    <div>
+                <nav className={`w-full flex flex-col rounded-3xl md:h-20 md:p-5 md:flex-row md:justify-between md:items-center lg:h-25 transition-colors duration-300 ${isDarkMode ? 'bg-slate-800' : 'bg-primary'}`}>
+                    <div className="h-15 md:h-auto p-5 md:p-0 flex justify-between items-center w-full md:w-auto">
                         <ThemeToggle isDark={isDarkMode} onToggle={() => setIsDarkMode((prev) => !prev)} />
+                        
+                        <button 
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            className="md:hidden"
+                        >
+                            {isMobileMenuOpen ? (
+                                <XMarkIcon className="size-12 text-white hover:cursor-pointer" />
+                            ) : (
+                                <Bars3Icon className="size-12 text-white hover:cursor-pointer" />
+                            )}
+                        </button>
                     </div>
 
                     {/* Nav Links */}
-                    <div>
-                        <Bars3Icon className="size-12 text-white hover:cursor-pointer md:hidden" />
-                        <ul className="h-full w-full hidden md:flex md:flex-row md:gap-6 md:items-center lg:gap-10">
-                            <li><button className="text-2xl text-primary font-semibold py-3 px-3 rounded-full bg-white hover:cursor-pointer">Home</button></li>
-                            
-                            <li><button className="text-2xl py-3 px-3 rounded-full text-white hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold" onClick={() => scrollToId("#about")}>About</button></li>
+                    <ul className={`${isMobileMenuOpen ? 'max-h-96 opacity-100 p-5' : 'max-h-0 opacity-0 p-0'} overflow-hidden transition-all duration-300 md:max-h-none md:opacity-100 md:flex md:flex-row md:items-center lg:gap-10 flex-col gap-2 md:gap-0 md:p-0 md:h-full md:w-auto w-full md:overflow-visible`}>
+                        <li><button className="text-2xl text-primary font-semibold py-3 px-3 rounded-full bg-white hover:cursor-pointer w-full md:w-auto text-center md:text-left">Home</button></li>
+                        
+                        <li><button className="text-2xl py-3 px-3 rounded-full text-white hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold w-full md:w-auto text-center md:text-left" onClick={() => {scrollToId("#about"); setIsMobileMenuOpen(false);}}>About</button></li>
 
-                            <li><button className="text-2xl py-3 px-3 rounded-full text-white  hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold" onClick={() => scrollToId("#skills")}>Skills</button></li>
+                        <li><button className="text-2xl py-3 px-3 rounded-full text-white  hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold w-full md:w-auto text-center md:text-left" onClick={() => {scrollToId("#skills"); setIsMobileMenuOpen(false);}}>Skills</button></li>
 
-                            <li><button className="text-2xl py-3 px-3 rounded-full text-white  hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold" onClick={() => scrollToId("#projects")}>Projects</button></li>
-                            
-                            <li><button className="text-2xl py-3 px-3 rounded-full text-white  hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold">Contact</button></li>
-                        </ul>
-                    </div>
+                        <li><button className="text-2xl py-3 px-3 rounded-full text-white  hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold w-full md:w-auto text-center md:text-left" onClick={() => {scrollToId("#projects"); setIsMobileMenuOpen(false);}}>Projects</button></li>
+                        
+                        <li><button className="text-2xl py-3 px-3 rounded-full text-white  hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold w-full md:w-auto text-center md:text-left" onClick={() => setIsMobileMenuOpen(false)}>Contact</button></li>
+                    </ul>
 
                 </nav>
                 
@@ -113,7 +126,7 @@ export default function Home() {
                         <div className="w-full flex justify-center gap-15 lg:gap-30 md:justify-end">
                             <DownloadCVButton redirectTo="https://drive.google.com/file/d/1F-exz-5iQqMyHqvupUrYnQ-UgAscbGlS/view?usp=sharing"/>
 
-                            <button className="border-3 px-5 text-sm font-semibold border-primary text-primary rounded-full transition-transform ease-in-out hover:scale-105 hover:cursor-pointer hover:bg-primary hover:text-white lg:text-2xl lg:px-10">Contact Me</button>
+                            <button onClick={contactWithEmail} className="border-3 px-5 text-sm font-semibold border-primary text-primary rounded-full transition-transform ease-in-out hover:scale-105 hover:cursor-pointer hover:bg-primary hover:text-white lg:text-2xl lg:px-10">Contact Me</button>
                         </div>
                     </div>
 
@@ -323,7 +336,7 @@ export default function Home() {
                 <div className="h-1/3 w-full flex flex-col gap-6">
                     <div className="w-full flex flex-col gap-5">
                         <h2 className={`text-gray-800 text-6xl font-bold ${isDarkMode ? 'text-slate-100' : 'text-gray-800'}`}>My Projects</h2>
-                        <span className="h-1.5 bg-gray-800 w-[15%]"></span>
+                        <span className={`h-1.5 w-[15%] ${isDarkMode ? 'bg-slate-100' : 'bg-gray-800'}`}></span>
                     </div>
 
                     <p className={`w-1/2 ${mutedTextClasses} text-xs font-light md:text-base lg:text-xl lg:font-medium`}>Below are some of my complete projects. Feel free to download the source code from my GitHub and tinker with it.</p>
@@ -379,6 +392,14 @@ export default function Home() {
                                 aria-label={`Show ${project.title}`}
                             />
                         ))}
+                    </div>
+                </div>
+            </section>
+            <section className={`h-screen w-full flex flex-col justify-center items-center gap-5 p-3 md:p-5 transition-colors duration-300 ${isDarkMode ? 'bg-slate-900 text-slate-100' : 'bg-primary text-gray-800'}`} id="#contact">
+                <div className="h-full w-full flex flex-col gap-6">
+                    <div className="w-full flex flex-col justify-start items-start lg:gap-2">
+                        <h1 className="text-xl md:text-4xl lg:text-6xl text-white font-bold mb-4">Contact Me</h1>
+                        <span className="h-1 bg-white w-[20%]"></span>
                     </div>
                 </div>
             </section>
