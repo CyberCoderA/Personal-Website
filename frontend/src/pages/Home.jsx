@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaEnvelope, FaMobile } from 'react-icons/fa';
 import { Bars3Icon, ChevronDownIcon, ComputerDesktopIcon } from "@heroicons/react/24/outline";
 import { AcademicCapIcon, PencilIcon, BookOpenIcon, ChevronLeftIcon, ChevronRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import DownloadCVButton from "../components/DownloadCVButton";
@@ -7,8 +8,8 @@ import Portrait from "../assets/portrait.png"
 import JavaBadge from "../assets/java_badge.png"
 import CybersecBadge from "../assets/cybersec_badge.png"
 import Medicore_IMG from "../assets/medicore_img.png"
-import FLICKD_IMG from "../assets/flickd_img.png"
 import BITBOOKS_IMG from "../assets/bitbooks_img.png"
+import METADATAFINDER_IMG from "../assets/metadata-finder_img.png"
 
 export default function Home() {
     const scrollToId = (id) => {
@@ -21,13 +22,13 @@ export default function Home() {
             title: "Medicore",
             image: Medicore_IMG,
             description: "A Hospital Management System that integrates JWT-based authentication, CRUD operations, and multiple business related processes.",
-            link: "https://github.com/search?q=Medicore"
+            link: "https://github.com/CyberCoderA/Medicare_HMS"
         },
         {
-            title: "Flickd",
-            image: FLICKD_IMG,
-            description: "A movie review sharing inspired by letterbox. I worked on the frontend development using React and integrated the backend my team mate developed using Node.js and Express.",
-            link: "https://github.com/search?q=Flickd"
+            title: "Metadata Finder",
+            image: METADATAFINDER_IMG,
+            description: "A tool for finding and embedding metadata in mp3 files. Made with React, Node.js, Express, and utilizing the FFMPeg library with the Deezer API for metadata information.",
+            link: "https://github.com/CyberCoderA/Mp3-Metadata-Finder"
         },
         {
             title: "BitBooks",
@@ -106,7 +107,7 @@ export default function Home() {
 
                         <li><button className="text-2xl py-3 px-3 rounded-full text-white  hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold w-full md:w-auto text-center md:text-left" onClick={() => {scrollToId("#projects"); setIsMobileMenuOpen(false);}}>Projects</button></li>
                         
-                        <li><button className="text-2xl py-3 px-3 rounded-full text-white  hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold w-full md:w-auto text-center md:text-left" onClick={() => setIsMobileMenuOpen(false)}>Contact</button></li>
+                        <li><button className="text-2xl py-3 px-3 rounded-full text-white  hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold w-full md:w-auto text-center md:text-left" onClick={() => {scrollToId("#contact"); setIsMobileMenuOpen(false);}}>Contact</button></li>
                     </ul>
 
                 </nav>
@@ -395,11 +396,48 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <section className={`h-screen w-full flex flex-col justify-center items-center gap-5 p-3 md:p-5 transition-colors duration-300 ${isDarkMode ? 'bg-slate-900 text-slate-100' : 'bg-primary text-gray-800'}`} id="#contact">
-                <div className="h-full w-full flex flex-col gap-6">
+            
+            <section className={`h-[77vh] md:h-[60vh] w-full flex flex-col justify-center items-center gap-2 p-3 md:p-5 transition-colors duration-300 ${isDarkMode ? 'bg-slate-900 text-slate-100' : 'bg-primary text-gray-800'}`} id="#contact">
+                <div className="h-full w-full flex flex-col gap-15">
                     <div className="w-full flex flex-col justify-start items-start lg:gap-2">
                         <h1 className="text-xl md:text-4xl lg:text-6xl text-white font-bold mb-4">Contact Me</h1>
                         <span className="h-1 bg-white w-[20%]"></span>
+                    </div>
+
+                    <div className="flex flex-col justify-between gap-5">
+                        <div className="flex flex-row items-center gap-2 md:gap-5 lg:gap-8">
+                            <FaEnvelope size={30} className="text-white" />
+                            <h1 className="text-white text-lg md:text-xl lg:text-2xl">adrian.pueblo27@gmail.com</h1>
+                        </div>
+
+                        <div className="flex flex-row items-center gap-2 md:gap-5 lg:gap-8">
+                            <FaMobile size={30} className="text-white" />
+                            <h1 className="text-white text-lg md:text-xl lg:text-2xl">0920 318 6904</h1>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col justify-between gap-5">
+                        <h1 className="text-white text-lg md:text-xl lg:text-2xl">Socials</h1>
+
+                        <div className="flex flex-row items-center gap-2 md:gap-5 lg:gap-8">
+                            <FaGithub size={30} className="text-white" />
+                            <h1 className="text-white text-lg md:text-xl lg:text-2xl">CyberCoderA</h1>
+                        </div>
+
+                        <div className="flex flex-row items-center gap-2 md:gap-5 lg:gap-8">
+                            <FaLinkedin size={30} className="text-white" />
+                            <h1 className="text-white text-lg md:text-xl lg:text-2xl">Adrian Pueblo</h1>
+                        </div>
+
+                        <div className="flex flex-row items-center gap-2 md:gap-5 lg:gap-8">
+                            <FaFacebook size={30} className="text-white" />
+                            <h1 className="text-white text-lg md:text-xl lg:text-2xl">Adrian Serrano Pueblo</h1>
+                        </div>
+
+                        <div className="flex flex-row items-center gap-2 md:gap-5 lg:gap-8">
+                            <FaInstagram size={30} className="text-white" />
+                            <h1 className="text-white text-lg md:text-xl lg:text-2xl">@heydrian</h1>
+                        </div>
                     </div>
                 </div>
             </section>
