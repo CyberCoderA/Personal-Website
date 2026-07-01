@@ -397,7 +397,7 @@ export default function Home() {
                 </div>
             </section>
             
-            <section className={`h-[77vh] md:h-[60vh] w-full flex flex-col justify-center items-center gap-2 p-3 md:p-5 transition-colors duration-300 ${isDarkMode ? 'bg-slate-900 text-slate-100' : 'bg-primary text-gray-800'}`} id="#contact">
+            <section className={`h-[77vh] md:h-[63vh] w-full flex flex-col justify-center items-center gap-2 p-3 md:p-5 transition-colors duration-300 ${isDarkMode ? 'bg-slate-900 text-slate-100' : 'bg-primary text-gray-800'}`} id="#contact">
                 <div className="h-full w-full flex flex-col gap-15">
                     <div className="w-full flex flex-col justify-start items-start lg:gap-2">
                         <h1 className="text-xl md:text-4xl lg:text-6xl text-white font-bold mb-4">Contact Me</h1>
