@@ -155,7 +155,7 @@ export default function Home() {
                     </div>
                     
                     <div className="w-full flex flex-col gap-2 md:gap-5 lg:gap-10">
-                        <p className="text-gray-100 text-sm font-light italic md:text-2xl lg:text-3xl lg:leading-snug">
+                        <p className="text-gray-100 text-[11px] font-light italic md:text-2xl lg:text-3xl lg:leading-snug">
                             "Highly motivated and detail-oriented aspiring software developer with a strong passion for technology and programming. Proficient in JavaScript, Python, C#, and Java, with hands-on experience gained through projects and coursework. Eager to apply technical and problem-solving skills while continuously learning and contributing to innovative software solutions."
                         </p>
                         
