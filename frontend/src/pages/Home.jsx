@@ -72,6 +72,10 @@ export default function Home() {
         window.open(activeProject.link, "_blank", "noopener,noreferrer");
     };
 
+    const openContacts = (link) => {
+        window.open(link, "_blank", "noopener, noreferrer");
+    }
+
     const activeProject = projects[activeIndex];
     const cardClasses = isDarkMode ? "bg-slate-800 text-slate-100 shadow-slate-900/50" : "bg-[#E9E9E9] text-gray-800 shadow-xl";
     const pillClasses = isDarkMode ? "bg-slate-700 text-slate-100" : "bg-[#CCC] text-gray-800";
@@ -182,6 +186,7 @@ export default function Home() {
                                 <div className="flex flex-col gap-1">
                                     <h2 className={`w-full ${mutedTextClasses} text-[11px] font-medium md:text-xl lg:text-2xl`}>Bachelor of Science in Information Technology - Mobile and Web Programming</h2>
                                     <p className={`${mutedTextClasses} text-gray-800 text-[10px] font-light md:text-lg lg:text-xl`}>NU MOA | 2026</p>
+                                    <p className={`${mutedTextClasses} text-gray-800 text-[10px] md:text-lg lg:text-xl font-semibold`}>Magna Cum Laude</p>
                                 </div>
                             </div>
 
@@ -190,6 +195,7 @@ export default function Home() {
                                 <div className="flex flex-col gap-1">
                                     <h2 className={`w-full ${mutedTextClasses} text-[11px] font-medium md:text-xl lg:text-2xl`}>Secondary Education (Highschool & Senior Highschool) - ICT Strand</h2>
                                     <p className={`${mutedTextClasses} text-gray-800 text-[10px] font-light md:text-lg lg:text-xl`}>Pasay City North Highschool - MDC | 2026</p>
+                                    <p className={`${mutedTextClasses} text-gray-800 text-[10px] md:text-lg lg:text-xl font-semibold`}>With High Honors</p>
                                 </div>
                             </div>
 
@@ -405,7 +411,7 @@ export default function Home() {
                     </div>
 
                     <div className="flex flex-col justify-between gap-5">
-                        <div className="flex flex-row items-center gap-2 md:gap-5 lg:gap-8">
+                        <div className="flex flex-row items-center gap-2 md:gap-5 lg:gap-8 hover:cursor-pointer" onClick={contactWithEmail}>
                             <FaEnvelope size={30} className="text-white" />
                             <h1 className="text-white text-lg md:text-xl lg:text-2xl">adrian.pueblo27@gmail.com</h1>
                         </div>
@@ -421,22 +427,22 @@ export default function Home() {
 
                         <div className="flex flex-row items-center gap-2 md:gap-5 lg:gap-8">
                             <FaGithub size={30} className="text-white" />
-                            <h1 className="text-white text-lg md:text-xl lg:text-2xl">CyberCoderA</h1>
+                            <h1 className="text-white text-lg md:text-xl lg:text-2xl hover:cursor-pointer" onClick={() => openContacts("https://github.com/CyberCoderA")}>CyberCoderA</h1>
                         </div>
 
                         <div className="flex flex-row items-center gap-2 md:gap-5 lg:gap-8">
                             <FaLinkedin size={30} className="text-white" />
-                            <h1 className="text-white text-lg md:text-xl lg:text-2xl">Adrian Pueblo</h1>
+                            <h1 className="text-white text-lg md:text-xl lg:text-2xl hover:cursor-pointer" onClick={() => openContacts("https://www.linkedin.com/in/adrian-pueblo-4243b934b")}>Adrian Pueblo</h1>
                         </div>
 
                         <div className="flex flex-row items-center gap-2 md:gap-5 lg:gap-8">
                             <FaFacebook size={30} className="text-white" />
-                            <h1 className="text-white text-lg md:text-xl lg:text-2xl">Adrian Serrano Pueblo</h1>
+                            <h1 className="text-white text-lg md:text-xl lg:text-2xl hover:cursor-pointer" onClick={() => openContacts("https://www.facebook.com/adrian.serrano.pueblo")}>Adrian Serrano Pueblo</h1>
                         </div>
 
                         <div className="flex flex-row items-center gap-2 md:gap-5 lg:gap-8">
                             <FaInstagram size={30} className="text-white" />
-                            <h1 className="text-white text-lg md:text-xl lg:text-2xl">@heydrian</h1>
+                            <h1 className="text-white text-lg md:text-xl lg:text-2xl hover:cursor-pointer" onClick={() => openContacts("https://www.instagram.com/its_heydrian/")}>@heydrian</h1>
                         </div>
                     </div>
                 </div>
