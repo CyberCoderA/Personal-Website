@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaEnvelope, FaMobile } from 'react-icons/fa';
 import { Bars3Icon, ChevronDownIcon, ComputerDesktopIcon } from "@heroicons/react/24/outline";
 import { AcademicCapIcon, PencilIcon, BookOpenIcon, ChevronLeftIcon, ChevronRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
+
 import DownloadCVButton from "../components/DownloadCVButton";
 import ThemeToggle from "../components/ThemeToggle";
 import Portrait from "../assets/portrait.png"
@@ -88,8 +89,8 @@ export default function Home() {
                 <nav className={`w-full flex flex-col rounded-3xl md:h-20 md:p-5 md:flex-row md:justify-between md:items-center lg:h-25 transition-colors duration-300 ${isDarkMode ? 'bg-slate-800' : 'bg-primary'}`}>
                     <div className="h-15 md:h-auto p-5 md:p-0 flex justify-between items-center w-full md:w-auto">
                         <ThemeToggle isDark={isDarkMode} onToggle={() => setIsDarkMode((prev) => !prev)} />
-                        
-                        <button 
+
+                        <button
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             className="md:hidden"
                         >
@@ -104,18 +105,18 @@ export default function Home() {
                     {/* Nav Links */}
                     <ul className={`${isMobileMenuOpen ? 'max-h-96 opacity-100 p-5' : 'max-h-0 opacity-0 p-0'} overflow-hidden transition-all duration-300 md:max-h-none md:opacity-100 md:flex md:flex-row md:items-center lg:gap-10 flex-col gap-2 md:gap-0 md:p-0 md:h-full md:w-auto w-full md:overflow-visible`}>
                         <li><button className="text-2xl text-primary font-semibold py-3 px-3 rounded-full bg-white hover:cursor-pointer w-full md:w-auto text-center md:text-left">Home</button></li>
-                        
-                        <li><button className="text-2xl py-3 px-3 rounded-full text-white hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold w-full md:w-auto text-center md:text-left" onClick={() => {scrollToId("#about"); setIsMobileMenuOpen(false);}}>About</button></li>
 
-                        <li><button className="text-2xl py-3 px-3 rounded-full text-white  hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold w-full md:w-auto text-center md:text-left" onClick={() => {scrollToId("#skills"); setIsMobileMenuOpen(false);}}>Skills</button></li>
+                        <li><button className="text-2xl py-3 px-3 rounded-full text-white hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold w-full md:w-auto text-center md:text-left" onClick={() => { scrollToId("#about"); setIsMobileMenuOpen(false); }}>About</button></li>
 
-                        <li><button className="text-2xl py-3 px-3 rounded-full text-white  hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold w-full md:w-auto text-center md:text-left" onClick={() => {scrollToId("#projects"); setIsMobileMenuOpen(false);}}>Projects</button></li>
-                        
-                        <li><button className="text-2xl py-3 px-3 rounded-full text-white  hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold w-full md:w-auto text-center md:text-left" onClick={() => {scrollToId("#contact"); setIsMobileMenuOpen(false);}}>Contact</button></li>
+                        <li><button className="text-2xl py-3 px-3 rounded-full text-white  hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold w-full md:w-auto text-center md:text-left" onClick={() => { scrollToId("#skills"); setIsMobileMenuOpen(false); }}>Skills</button></li>
+
+                        <li><button className="text-2xl py-3 px-3 rounded-full text-white  hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold w-full md:w-auto text-center md:text-left" onClick={() => { scrollToId("#projects"); setIsMobileMenuOpen(false); }}>Projects</button></li>
+
+                        <li><button className="text-2xl py-3 px-3 rounded-full text-white  hover:bg-white hover:text-primary hover:cursor-pointer hover:font-semibold w-full md:w-auto text-center md:text-left" onClick={() => { scrollToId("#contact"); setIsMobileMenuOpen(false); }}>Contact</button></li>
                     </ul>
 
                 </nav>
-                
+
                 <div className="h-full w-full flex flex-col gap-15 md:flex-row-reverse">
                     <div className="h-full lg:w-4/2 flex flex-col gap-10 lg: lg:gap-15 md:justify-center">
                         <div className="flex flex-col items-center md:items-end">
@@ -129,7 +130,7 @@ export default function Home() {
                         <p className={`text-sm font-light text-center md:text-end md:text-xl lg:text-4xl ${isDarkMode ? 'text-slate-300' : 'text-gray-600'}`}>I am a motivated and detail-oriented professional seeking to leverage my technical skills in a dynamic organization to contribute a positive impact. My ability to handle tasks under pressure will be a great addition to any organization I’m part of.</p>
 
                         <div className="w-full flex justify-center gap-15 lg:gap-30 md:justify-end">
-                            <DownloadCVButton redirectTo="https://drive.google.com/file/d/1F-exz-5iQqMyHqvupUrYnQ-UgAscbGlS/view?usp=sharing"/>
+                            <DownloadCVButton redirectTo="https://drive.google.com/file/d/1RFAtoC6fYn_wq2JflrzohkRv3V83Fmeh/view?usp=sharing" />
 
                             <button onClick={contactWithEmail} className="border-3 px-5 text-sm font-semibold border-primary text-primary rounded-full transition-transform ease-in-out hover:scale-105 hover:cursor-pointer hover:bg-primary hover:text-white lg:text-2xl lg:px-10">Contact Me</button>
                         </div>
@@ -147,25 +148,25 @@ export default function Home() {
             </section>
 
             {/* About Me */}
-            <section className={`h-screen w-full p-5 gap-6 flex flex-col md:p-10 md:flex-row md:justify-between lg:p-10 lg:gap-10 transition-colors duration-300 ${isDarkMode ? 'bg-slate-900' : 'bg-primary'}`} id="#about">
+            <section className={`h-screen w-full p-5 gap-1 flex flex-col md:p-10 md:flex-row md:justify-between lg:p-10 lg:gap-10 transition-colors duration-300 ${isDarkMode ? 'bg-slate-900' : 'bg-primary'}`} id="#about">
                 <div className="w-full flex flex-col gap-5 md:w-1/2 lg:gap-12">
                     <div className="w-full flex flex-col justify-start items-start lg:gap-2">
                         <h1 className="text-xl md:text-4xl lg:text-6xl text-white font-bold mb-4">Know About Me</h1>
                         <span className="h-1 bg-white w-[40%]"></span>
                     </div>
-                    
+
                     <div className="w-full flex flex-col gap-2 md:gap-5 lg:gap-10">
                         <p className="text-gray-100 text-[11px] font-light italic md:text-2xl lg:text-3xl lg:leading-snug">
-                            "Highly motivated and detail-oriented aspiring software developer with a strong passion for technology and programming. Proficient in JavaScript, Python, C#, and Java, with hands-on experience gained through projects and coursework. Eager to apply technical and problem-solving skills while continuously learning and contributing to innovative software solutions."
+                            "I am a Bachelor of Science in Information Technology graduate with a strong foundation in cybersecurity, web development, and mobile app development. Proficient in multiple programming languages and tech stacks for mobile and web development. I specialize in backend development, specifically using Spring Boot as my main technology. I completed a six-month cybersecurity internship where I supported endpoint management, collaborated with IT teams, and contributed to company-wide RMM deployment. Eager to apply my technical skills, adaptability, and passion for developing reliable software solutions in a professional environment."
                         </p>
-                        
+
                         <h2 className="text-white text-md font-medium md:text-2xl lg:text-5xl">- Adrian Pueblo</h2>
                     </div>
                 </div>
 
                 <div className="h-full w-full flex flex-col gap-5 md:gap-10 md:w-1/2 lg:justify-around">
                     <div className="w-full flex flex-col gap-3 px-2 md:px-5 md:gap-6">
-                    <h2 className="text-white text-xl font-medium md:text-2xl lg:text-4xl">Experience</h2>
+                        <h2 className="text-white text-xl font-medium md:text-2xl lg:text-4xl">Experience</h2>
                         <div className="w-full flex flex-row items-center gap-2">
                             <ComputerDesktopIcon className="size-10 md:size-14 lg:size-16 text-white" />
                             <div className="flex flex-col gap-1">
@@ -235,7 +236,7 @@ export default function Home() {
                         </a>
 
                         <a href="https://www.credly.com/badges/ae3abd00-13a6-45bb-8609-c43526cee6b1/linked_in?t=te6vxh" target="_blank" rel="noopener noreferrer" className="h-25 md:h-50 lg:h-60 w-full md:w-6/12 lg:w-6/11">
-                                <div className={`h-full ${cardClasses} shadow-xl flex flex-row items-start gap-2 p-2 rounded-2xl md:p-5 md:gap-5 transition-transform hover:scale-105 hover:cursor-pointer`}>
+                            <div className={`h-full ${cardClasses} shadow-xl flex flex-row items-start gap-2 p-2 rounded-2xl md:p-5 md:gap-5 transition-transform hover:scale-105 hover:cursor-pointer`}>
                                 <img src={CybersecBadge} alt="java-badge" className="h-full" />
                                 <div className="h-full flex flex-col justify-around">
                                     <div>
@@ -305,7 +306,7 @@ export default function Home() {
                                     <h4 className="text-sm lg:text-2xl">Tailwind</h4>
                                 </div>
 
-                                 <div className={`h-6 px-3 flex items-center rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl ${pillClasses}`}>
+                                <div className={`h-6 px-3 flex items-center rounded-lg lg:h-12 lg:px-6 lg:rounded-2xl ${pillClasses}`}>
                                     <h4 className="text-sm lg:text-2xl">React</h4>
                                 </div>
 
@@ -366,7 +367,7 @@ export default function Home() {
                                 <h2 className="text-white text-2xl md:text-4xl font-bold text-center">{activeProject.title}</h2>
 
                                 <p className="w-full md:w-3/4 text-white text-base md:text-2xl text-center font-light">{activeProject.description}</p>
-                                
+
                                 <button
                                     type="button"
                                     onClick={openProject}
@@ -402,7 +403,7 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            
+
             <section className={`h-[77vh] md:h-[63vh] w-full flex flex-col justify-center items-center gap-2 p-3 md:p-5 transition-colors duration-300 ${isDarkMode ? 'bg-slate-900 text-slate-100' : 'bg-primary text-gray-800'}`} id="#contact">
                 <div className="h-full w-full flex flex-col gap-15">
                     <div className="w-full flex flex-col justify-start items-start lg:gap-2">
